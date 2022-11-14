@@ -1,0 +1,2 @@
+RES: AT+CREG?
+

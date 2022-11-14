@@ -1,0 +1,67 @@
+[Tx:]x
+
+
+
+
+
+
+
+Enter option
+
+
+
+
+>>
+
+[Tx:]x
+
+
+
+
+
+
+
+Enter option
+
+
+
+
+>>
+
+[Tx:]4
+
+
+---,---,---,---,---,---,---,---,---,---,---,---,---,---,---,---,
+
+
+
+
+Enter "delete",<index>  to delete
+
+Enter "read",<index>  to read
+
+Enter "all" for index to delete or read all
+
+Enter "list" to print pp list
+
+Enter "chip" to delete chip
+
+
+
+Enter "x" to exit
+
+
+
+>>
+
+
+
+
+
+
+erasing flash chip wait..
+
+erase done!
+
+>>
+
