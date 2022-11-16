@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.IO.Ports;
@@ -14,6 +15,8 @@ namespace iMoniConfig
 {
     public partial class Form1 : Form
     {
+        uint timeOutTime = 20000;
+        uint timeOutCounter = 0;
         String indata = "";
         int counter = 0;
         Boolean logWriteFlag = false;
@@ -28,11 +31,12 @@ namespace iMoniConfig
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             var ports = SerialPort.GetPortNames();
             serialPortCmb.DataSource = ports;
 
             DateTime aDate = DateTime.Now;
-            String dateTime = aDate.ToString("yyyy_MM_dd_HH_mm_ss");
+            String dateTime ="Log" +aDate.ToString("yyyy_MM_dd_HH_mm_ss");
             logNametxt.Text = dateTime;
 
 
@@ -48,16 +52,39 @@ namespace iMoniConfig
             comboBox54.DropDownWidth = DropDownWidth(comboBox54);
 
 
-          //  ThreadPool.QueueUserWorkItem(ThreadPoolMethod, new object[] { 2, 3 });
- 
-         
+
+
+            //     ((Control)tabControl1.TabPages["acem").Enabled = false;
+            //    ((Control)this.tabPage).Enabled = false;
+
+            //  ThreadPool.QueueUserWorkItem(ThreadPoolMethod, new object[] { 2, 3 });
+
+
 
 
             //  Console.WriteLine(congModebtn.BackColor);
+            tabDisable();
+        }
+
+        void tabAnable() {
+            for (byte i = 0; i < tabControl1.TabCount; i++)
+            {
+                tabControl1.TabPages[i].Enabled = true;
+            }
+            tabControl1.TabPages[5].Enabled = false;
 
         }
 
-        
+
+        void tabDisable()
+        {
+            for(byte i = 0; i < tabControl1.TabCount; i++)
+            {
+                tabControl1.TabPages[i].Enabled = false;
+            }
+            tabControl1.TabPages[0].Enabled = true;
+
+        }
 
 
         private void opnBtn_Click(object sender, EventArgs e)
@@ -74,6 +101,7 @@ namespace iMoniConfig
                     serialPortCmb.Enabled = false;
                     baudCmb.Enabled = false;
                     timer1.Enabled = true;
+                    tabAnable();
                 }
                 else {
                     
@@ -82,7 +110,7 @@ namespace iMoniConfig
                     serialPortCmb.Enabled = true;
                     baudCmb.Enabled = true;
                     timer1.Enabled = false;
-
+                    tabDisable();
                 }
 
                 
@@ -91,7 +119,7 @@ namespace iMoniConfig
             catch ( Exception ee)
             {
                 MessageBox.Show(ee.ToString());
-                opnBtn.Text = "Close";
+                opnBtn.Text = "Open";
                 serialPortCmb.Enabled = true;
                 baudCmb.Enabled = true;
                 timer1.Enabled = false;
@@ -130,7 +158,7 @@ namespace iMoniConfig
                     scrolRich();
 
                     if (indata.Contains("Enter c for entering calibration mode") && congModebtn.Text== "Restart iMoni") {
-                        congModebtn.Text = "Configuration Mode";
+                        congModebtn.Text = "Auto boot";
                         congModebtn.BackColor = Color.Transparent;
                         Thread.Sleep(1000);
                         serialPort1.Write("c");
@@ -164,20 +192,51 @@ namespace iMoniConfig
                         MessageBox.Show("Reply of iMoni is " + indata, "Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         button16.Text = "Send Config"; // ext
                     }
+                    else if (tabControl1.SelectedIndex == 2 && indata.IndexOf("Err") > -1)
+                    {
+                        MessageBox.Show("Reply of iMoni is " + indata, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        button16.Text = "Send Config"; // ext
+                    }
+
                     else if (tabControl1.SelectedIndex == 3 && indata.IndexOf("Saved at") > -1)
                     {
                         MessageBox.Show("Reply of iMoni is " + indata, "Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        button16.Text = "Send Config"; //imoni  
+                        button17.Text = "Send Config"; //imoni  
+                    }
+                    else if (tabControl1.SelectedIndex == 3 && indata.IndexOf("Err") > -1)
+                    {
+                        MessageBox.Show("Reply of iMoni is " + indata, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        button17.Text = "Send Config"; // ext
                     }
                     else if (tabControl1.SelectedIndex == 4 && indata.IndexOf("Saved at") > -1)
                     {
                         MessageBox.Show("Reply of iMoni is " + indata, "Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         button18.Text = "Send Config"; //acem
                     }
+                    else if (tabControl1.SelectedIndex == 4 && indata.IndexOf("Err") > -1)
+                    {
+                        MessageBox.Show("Reply of iMoni is " + indata, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        button18.Text = "Send Config"; // ext
+                    }
                     else if (tabControl1.SelectedIndex == 5 && indata.IndexOf("Saved at") > -1)
                     {
                         MessageBox.Show("Reply of iMoni is " + indata, "Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         button19.Text = "Send Config"; //acem
+                    }
+                    else if (tabControl1.SelectedIndex == 5 && indata.IndexOf("Err") > -1)
+                    {
+                        MessageBox.Show("Reply of iMoni is " + indata, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        button19.Text = "Send Config"; // ext
+                    }
+                    else if (tabControl1.SelectedIndex == 6 && indata.IndexOf("Saved at") > -1)
+                    {
+                        MessageBox.Show("Reply of iMoni is " + indata, "Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        button27.Text = "Send Config"; //acem
+                    }
+                    else if (tabControl1.SelectedIndex == 6 && indata.IndexOf("Err") > -1)
+                    {
+                        MessageBox.Show("Reply of iMoni is " + indata, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        button27.Text = "Send Config"; // ext
                     }
 
 
@@ -194,7 +253,7 @@ namespace iMoniConfig
             }
             catch
             {
-                if (serialPort1.BytesToRead > 0)
+                if (serialPort1.IsOpen==true && serialPort1.BytesToRead > 0)
                 {
                     indata = serialPort1.ReadExisting();
                     ///   Console.WriteLine("<2> " + indata);
@@ -232,7 +291,7 @@ namespace iMoniConfig
         private void nwNamebtn_Click(object sender, EventArgs e)
         {
             DateTime aDate = DateTime.Now;
-            String dateTime = aDate.ToString("yyyy_MM_dd_HH_mm_ss");
+            String dateTime = "Log"+aDate.ToString("yyyy_MM_dd_HH_mm_ss");
             logNametxt.Text = dateTime;
         }
 
@@ -474,16 +533,26 @@ void updateDebugTxBox(String data) {
         private void logEbtn_Click(object sender, EventArgs e)
         {
             logWriteFlag = true;
+            logDisbtn.Enabled = true;
+            logEbtn.Enabled = false;
         }
 
         private void logDisbtn_Click(object sender, EventArgs e)
         {
             logWriteFlag = false;
+            logDisbtn.Enabled = false;
+            logEbtn.Enabled = true;
         }
 
         void writeToLog(String data) {
 
-            string path = logNametxt.Text+".txt";
+            string subPath = "log"; // Your code goes here
+
+
+            if (!Directory.Exists(subPath))
+                Directory.CreateDirectory(subPath);
+
+            string path = subPath+"/"+logNametxt.Text+".txt";
             // This text is added only once to the file.
             // Create a file to write to.
                 using (StreamWriter sw = File.AppendText(path))
@@ -1052,8 +1121,6 @@ void updateDebugTxBox(String data) {
 
             updateAcemPage();
             button18.Text = "Please wait";
-
-
             nowState = "acemMode";
             sendSerial("8\r\n");
             Thread.Sleep(2000);
@@ -1091,7 +1158,7 @@ void updateDebugTxBox(String data) {
                 richTextBox7.Text = "{imon0,2,0,11113333444444,11111111100000,00000000000000,44444444444444,0+1,0+1,0+4095,0+4095,0+4095,0+4095,0+1,0+1,0+1,0+1,0+1,0+1,0+1,0+1,}";
 
             }
-            else if (comboBox54.SelectedIndex ==2)
+            else if (comboBox54.SelectedIndex == 2)
             {
 
                 richTextBox7.Text = "{acem15,4,0,aaaaaa5aaa,1111111111,0000000000,4444447444,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,1,3,3,1,0,250,2222226222,0BD3+0BD5+0BD7+0BB7+0BB9+0BBB+0C87+0C0B+0C25+A55D,}";
@@ -1106,6 +1173,22 @@ void updateDebugTxBox(String data) {
 
                 richTextBox7.Text = "{acem1,2,0,111111511,111111111,000000000,444444544,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,1,3,3,0,0,250,444444444,0000+0000+0000+0000+0000+0000+0000+0000+0000,}";
             }
+            else if (comboBox54.SelectedIndex == 5)
+            {
+                richTextBox7.Text = "{ex1,1,1,3333111,1111111,0000000,4444555,0+1024,0+1024,0+1024,0+1024,0+1024,0+1024,0+1024,}";
+                // richTextBox7.Text = "{xxxxxxxxxxxxxxx,dialogbb,,,http://devices.iot.ideamart.io/imoni,8081,0772338406,60,15,,236}";
+            }
+            else if (comboBox54.SelectedIndex == 6)
+            {
+                richTextBox7.Text = "{th1,1,1,113,111,000,444,0+1024,0+1024,0+1024,}";
+
+            }
+            else if (comboBox54.SelectedIndex == 7)
+            {
+                richTextBox7.Text = "{gen1,1,0,1111151111111511,1111011111111111,0000000000000000,5555555555555555,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,0+1023,1,3,3,0,0,200,0000020000000200,00C7+00C8+00CA+00C9+0000+00CB+00C5+006E+006F+0070+0071+0072+0073+008F+00A4+0066,}";
+
+            }
+
         }
 
         private void button20_Click(object sender, EventArgs e)
@@ -1126,7 +1209,7 @@ void updateDebugTxBox(String data) {
         {
             uint counter =0;
             object[] array = stateInfo as object[];
-
+            
             Console.WriteLine("virtual thread." + array[0]);
             indata = "";
 
@@ -1143,10 +1226,20 @@ void updateDebugTxBox(String data) {
                     if (indata.Length > 0)
                         Console.WriteLine(indata);
                     counter++;
-                    if (counter * 1000 > 5000)
+                    if (counter  > timeOutTime)
                     {
-                        break;
+                        this.Invoke(new MethodInvoker(delegate ()
+                        {
+                            button20.Text = "Erase Chip";
+                        }));
+
+                        
+                        MessageBox.Show("Chip erase fail.Please try again","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        Thread thread = Thread.CurrentThread;
+                        thread.Abort();
+                       
                     }
+
                     Thread.Sleep(1);
                 }
 
@@ -1160,12 +1253,18 @@ void updateDebugTxBox(String data) {
                 while (indata.IndexOf("done") < 0)
                 {
                     counter++;
-                    if (counter * 1000 > 10000)
+                    if (counter  > timeOutTime)
                     {
-                        break;
+                        this.Invoke(new MethodInvoker(delegate ()
+                        {
+                            button20.Text = "Erase Chip";
+                        }));
+                      
+                        MessageBox.Show("Chip erase fail.Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Thread thread = Thread.CurrentThread;
+                        thread.Abort();
                     }
-                    if (indata.Length > 0)
-                        Console.WriteLine(indata);
+                     
                     Thread.Sleep(1);
                 }
 
@@ -1193,9 +1292,17 @@ void updateDebugTxBox(String data) {
                     if (indata.Length > 0)
                         Console.WriteLine(indata);
                     counter++;
-                    if (counter * 1000 > 5000)
+                    if (counter  > timeOutTime)
                     {
-                        break;
+                        this.Invoke(new MethodInvoker(delegate ()
+                        {
+                            button21.Text = "Erase peripharal";
+                        }));
+
+                        
+                        MessageBox.Show("Delete periparal error.Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Thread thread = Thread.CurrentThread;
+                        thread.Abort();
                     }
                     Thread.Sleep(1);
                 }
@@ -1207,21 +1314,29 @@ void updateDebugTxBox(String data) {
                     sendSerial("delete,all\r\n");
                 }));
                 counter = 0;
-                while (indata.IndexOf("done") < 0)
+                while (indata.IndexOf("deleted") < 0)
                 {
                     counter++;
-                    if (counter * 1000 > 10000)
+                    if (counter  > timeOutTime)
                     {
-                        break;
+                        this.Invoke(new MethodInvoker(delegate ()
+                        {
+                            button21.Text = "Erase peripharal";
+                        }));
+
+                       
+                        MessageBox.Show("Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        Thread thread = Thread.CurrentThread;
+                        thread.Abort();
                     }
-                    if (indata.Length > 0)
-                        Console.WriteLine(indata);
+                    
                     Thread.Sleep(1);
                 }
 
 
                 // sendSerial("delete,chip\r");
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
                 this.Invoke(new MethodInvoker(delegate ()
                 {
                     sendSerial("x\r\n");
@@ -1238,14 +1353,22 @@ void updateDebugTxBox(String data) {
                 {
                     sendSerial("4\r\n");
                 }));
-                while (indata.IndexOf(",") < 0)
+                while (indata.IndexOf(">>") < 0)
                 {
                     if (indata.Length > 0)
                         Console.WriteLine(indata);
                     counter++;
-                    if (counter * 1000 > 5000)
+                    if (counter  > timeOutTime)
                     {
-                        break;
+                        this.Invoke(new MethodInvoker(delegate ()
+                        {
+                            button21.Text = "Read peripharal";
+                        }));
+                        
+                        MessageBox.Show("Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        Thread thread = Thread.CurrentThread;
+                        thread.Abort();
                     }
                     Thread.Sleep(1);
                 }
@@ -1257,15 +1380,20 @@ void updateDebugTxBox(String data) {
                     sendSerial("read,all\r\n");
                 }));
                 counter = 0;
-                while (indata.IndexOf("done") < 0)
+                while (indata.IndexOf(">>") < 0)
                 {
                     counter++;
-                    if (counter * 1000 > 10000)
+                    if (counter * 1000 > timeOutTime)
                     {
-                        break;
+                        this.Invoke(new MethodInvoker(delegate ()
+                        {
+                            button24.Text = "Read peripharal";
+                        }));
+                        MessageBox.Show("Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Thread thread = Thread.CurrentThread;
+                        thread.Abort();
                     }
-                    if (indata.Length > 0)
-                        Console.WriteLine(indata);
+                    
                     Thread.Sleep(1);
                 }
 
@@ -1327,6 +1455,367 @@ void updateDebugTxBox(String data) {
         private void button24_Click(object sender, EventArgs e)
         {
             ThreadPool.QueueUserWorkItem(ThreadPoolMethod, new object[] { "readPer" });
+        }
+
+        private void button23_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button23_Click_2(object sender, EventArgs e)
+        {
+            comboBox55.Items.Clear();
+            comboBox56.Items.Clear();
+            String filePath = "config.txt";
+
+            try
+            {
+
+                string[] lines = File.ReadAllLines(filePath);
+
+
+                uint index = 0;
+                foreach (string line in lines)
+                {
+                    string[] pnames = line.Split('*');
+                    if (index++ == 0)
+                    {
+                        comboBox55.Text = pnames[0];
+                    }
+                    Console.WriteLine(pnames[1]);
+                    if (pnames[0].Length > 1) {
+                        comboBox55.Items.Add(pnames[0]);
+                        comboBox56.Items.Add(pnames[1]);
+                    }
+
+                  
+                }
+               
+
+            }
+            catch (Exception rr)
+            {
+                MessageBox.Show(rr.ToString(),"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        private void comboBox55_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBox56.SelectedIndex = comboBox55.SelectedIndex;
+            richTextBox9.Text = comboBox56.Text;
+            string[] subFiled = comboBox56.Text.Split(',');
+            String indexIs = subFiled[0];
+
+          //  Console.Write(indexIs[indexIs.Length - 1]);
+            if (indexIs[indexIs.Length - 2] >= '0' && indexIs[indexIs.Length - 2] <= '9'  )
+            {
+                textBox2.Text = ( indexIs.Substring( indexIs.Length - 2));
+            }
+            else {
+                textBox2.Text =  (indexIs.Substring( indexIs.Length - 1));
+            }
+
+            if (subFiled[0].IndexOf("acem") > -1){
+                //  numericUpDown85.Value = Convert.ToInt16(subFiled[16]);
+                //Console.WriteLine(subFiled[subFiled[3].Length+7]);
+                textBox3.Text = subFiled[subFiled[3].Length + 7];
+                textBox3.Enabled = true;
+            }
+            else
+            {
+               textBox3.Text = "";
+                textBox3.Enabled = false;
+            }
+
+            
+        }
+
+        private void session_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+         /*   
+            string[] subFiled = comboBox56.Text.Split(',');
+            String indexIs = subFiled[0];
+            subFiled[subFiled[3].Length + 7] = textBox3.Text;
+            //  Console.Write(indexIs[indexIs.Length - 1]);
+            if (indexIs[indexIs.Length - 2] >= '0' && indexIs[indexIs.Length - 2] <= '9')
+            {
+                //newIndex = textBox2.Text;
+                subFiled[0] = subFiled[0].Remove(indexIs.Length - 2) + textBox2.Text;
+                //   textBox2.Text = (indexIs.Substring(indexIs.Length - 2));
+            }
+            else
+            {
+                subFiled[0] = subFiled[0].Remove(indexIs.Length - 1) + textBox2.Text;
+                //  textBox2.Text = (indexIs.Substring(indexIs.Length - 1));
+            }
+            String newConfig = "";
+
+            foreach (string line in subFiled)
+            {
+                if (line.Contains("}"))
+                {
+                    //   newConfig += line+"$";
+                    newConfig += line;
+                    //  break;
+                }
+                else
+                {
+                     newConfig += line + ",";
+                }
+                
+            }
+            //  newConfig += "}";
+            richTextBox9.Text = newConfig;*/
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+            
+          
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            ThreadPool.QueueUserWorkItem(ThreadPoolMethod, new object[] { "delPer" });
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            ThreadPool.QueueUserWorkItem(ThreadPoolMethod, new object[] { "delChip" });
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+
+            if (serialPort1.IsOpen == true)
+            {
+                timeOutCounter = 0;
+                updatEasyConfig();
+                button27.Text = "Please wait";
+                nowState = "tempMode";
+                sendSerial("8\r\n");
+                Thread.Sleep(2000);
+                sendSerial(richTextBox9.Text + "\r\n");
+            }
+            else
+            {
+                MessageBox.Show("Please open port","Error",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+            
+        }
+
+        private void comboBox56_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        void updatEasyConfig()
+        {
+            try
+            {
+
+
+                string[] subFiled = comboBox56.Text.Split(',');
+                String indexIs = subFiled[0];
+                if (textBox3.Enabled == true)
+                {
+                    subFiled[subFiled[3].Length + 7] = textBox3.Text;
+                }
+
+                //  Console.Write(indexIs[indexIs.Length - 1]);
+                if (indexIs[indexIs.Length - 2] >= '0' && indexIs[indexIs.Length - 2] <= '9')
+                {
+                    //newIndex = textBox2.Text;
+                    subFiled[0] = subFiled[0].Remove(indexIs.Length - 2) + textBox2.Text;
+                    //   textBox2.Text = (indexIs.Substring(indexIs.Length - 2));
+                }
+                else
+                {
+                    subFiled[0] = subFiled[0].Remove(indexIs.Length - 1) + textBox2.Text;
+                    //  textBox2.Text = (indexIs.Substring(indexIs.Length - 1));
+                }
+                String newConfig = "";
+
+                foreach (string line in subFiled)
+                {
+                    if (line.IndexOf('}') > -1)
+                    {
+                        newConfig += line;
+                        //  newConfig += line + "$";
+                    }
+                    else
+                    {
+                        newConfig += line + ",";
+                    }
+
+                    // newConfig += line + ",";
+                }
+                //  newConfig += "}";
+                richTextBox9.Text = newConfig;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            updatEasyConfig();
+
+        }
+
+        private void session_MouseMove(object sender, MouseEventArgs e)
+        {
+            updatEasyConfig();
+        }
+
+        private void richTextBox9_MouseMove(object sender, MouseEventArgs e)
+        {
+            updatEasyConfig();
+        }
+
+        private void button25_Click_1(object sender, EventArgs e)
+        {
+
+            sendSerial("9\r\n");
+        }
+
+        private void serialPortCmb_MouseEnter(object sender, EventArgs e)
+        {
+            var ports = SerialPort.GetPortNames();
+            serialPortCmb.DataSource = ports;
+        }
+
+        private void serialPortCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var ports = SerialPort.GetPortNames();
+            serialPortCmb.DataSource = ports;
+        }
+
+        private void oneHtzTmr_Tick(object sender, EventArgs e)
+        {
+            timeOutCounter++;
+            if(timeOutCounter>10 && nowState == "tempMode")
+            {
+                timeOutCounter = 0;
+                button27.Text = "Send config";
+                MessageBox.Show("Time out for iMoni responce. please try again","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        private void button26_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog
+            {
+                InitialDirectory = @"D:\",
+                Title = "Browse configure Files",
+
+                CheckFileExists = true,
+                CheckPathExists = true,
+
+                DefaultExt = "txt",
+                Filter = "txt files (*.txt)|*.txt",
+                FilterIndex = 2,
+                RestoreDirectory = true,
+
+                ReadOnlyChecked = true,
+                ShowReadOnly = true
+            };
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                label76.Text = openFileDialog1.FileName;
+                openFileDialog1.RestoreDirectory = true;
+                comboBox55.Items.Clear();
+                comboBox56.Items.Clear();
+                String filePath = label76.Text;
+
+                try
+                {
+
+                    string[] lines = File.ReadAllLines(filePath);
+
+
+                    uint index = 0;
+                    foreach (string line in lines)
+                    {
+                        string[] pnames = line.Split('*');
+                        if (index++ == 0)
+                        {
+                            comboBox55.Text = pnames[0];
+                        }
+                        Console.WriteLine(pnames[1]);
+                        if (pnames[0].Length > 1)
+                        {
+                            comboBox55.Items.Add(pnames[0]);
+                            comboBox56.Items.Add(pnames[1]);
+                        }
+
+
+                    }
+
+
+                }
+                catch (Exception rr)
+                {
+                    MessageBox.Show(rr.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
+
+            }
+        }
+
+
+         void run_cmd(string cmd, string args)
+        {
+
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = "iMoniPacketAnalyzer (1).exe";
+            start.Arguments = string.Format("{0} {1}", cmd, args);
+            start.UseShellExecute = false;
+            start.RedirectStandardOutput = true;
+            start.CreateNoWindow = true; // We don't need new window
+            start.RedirectStandardOutput = true;// Any output, generated by application will be redirected back
+            start.RedirectStandardError = true; // Any error in standard output will be redirected back (for example exceptions)
+
+           
+
+            using (Process process = Process.Start(start))
+            {
+               // System.Windows.Forms.SendKeys.Send("{ENTER}");
+                using (StreamReader reader = process.StandardOutput)
+                {
+                    string result = reader.ReadToEnd();
+                    Console.Write(result);
+                    richTextBox11.Text += result;
+                }
+            }
+            // return result;
+        }
+
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void button29_Click_1(object sender, EventArgs e)
+        {
+            richTextBox11.Clear();
+            run_cmd(richTextBox10.Text, "fhdx\r\n");
         }
     }
 }

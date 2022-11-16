@@ -38,6 +38,8 @@
             this.clockcheck = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.home = new System.Windows.Forms.TabPage();
+            this.button25 = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
             this.label71 = new System.Windows.Forms.Label();
             this.label70 = new System.Windows.Forms.Label();
             this.checkBox49 = new System.Windows.Forms.CheckBox();
@@ -388,7 +390,27 @@
             this.richTextBox7 = new System.Windows.Forms.RichTextBox();
             this.label69 = new System.Windows.Forms.Label();
             this.comboBox54 = new System.Windows.Forms.ComboBox();
-            this.button24 = new System.Windows.Forms.Button();
+            this.session = new System.Windows.Forms.TabPage();
+            this.button28 = new System.Windows.Forms.Button();
+            this.button27 = new System.Windows.Forms.Button();
+            this.label75 = new System.Windows.Forms.Label();
+            this.label73 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label74 = new System.Windows.Forms.Label();
+            this.label72 = new System.Windows.Forms.Label();
+            this.richTextBox9 = new System.Windows.Forms.RichTextBox();
+            this.comboBox56 = new System.Windows.Forms.ComboBox();
+            this.comboBox55 = new System.Windows.Forms.ComboBox();
+            this.button23 = new System.Windows.Forms.Button();
+            this.oneHtzTmr = new System.Windows.Forms.Timer(this.components);
+            this.button26 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label76 = new System.Windows.Forms.Label();
+            this.packetDecode = new System.Windows.Forms.TabPage();
+            this.button29 = new System.Windows.Forms.Button();
+            this.richTextBox10 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox11 = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.home.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -502,13 +524,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown83)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown84)).BeginInit();
             this.manual.SuspendLayout();
+            this.session.SuspendLayout();
+            this.packetDecode.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBox1
             // 
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(8, 198);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(592, 393);
+            this.richTextBox1.Size = new System.Drawing.Size(592, 415);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -573,14 +598,17 @@
             this.tabControl1.Controls.Add(this.imoni);
             this.tabControl1.Controls.Add(this.acem);
             this.tabControl1.Controls.Add(this.manual);
+            this.tabControl1.Controls.Add(this.session);
+            this.tabControl1.Controls.Add(this.packetDecode);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(850, 628);
+            this.tabControl1.Size = new System.Drawing.Size(850, 651);
             this.tabControl1.TabIndex = 9;
             // 
             // home
             // 
+            this.home.Controls.Add(this.button25);
             this.home.Controls.Add(this.button24);
             this.home.Controls.Add(this.label71);
             this.home.Controls.Add(this.label70);
@@ -609,11 +637,33 @@
             this.home.Location = new System.Drawing.Point(4, 25);
             this.home.Name = "home";
             this.home.Padding = new System.Windows.Forms.Padding(3);
-            this.home.Size = new System.Drawing.Size(842, 599);
+            this.home.Size = new System.Drawing.Size(842, 622);
             this.home.TabIndex = 0;
             this.home.Text = "Home";
             this.home.UseVisualStyleBackColor = true;
             this.home.Click += new System.EventHandler(this.home_Click);
+            // 
+            // button25
+            // 
+            this.button25.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button25.Location = new System.Drawing.Point(521, 131);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(79, 30);
+            this.button25.TabIndex = 39;
+            this.button25.Text = "Restart";
+            this.button25.UseVisualStyleBackColor = true;
+            this.button25.Click += new System.EventHandler(this.button25_Click_1);
+            // 
+            // button24
+            // 
+            this.button24.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button24.Location = new System.Drawing.Point(385, 131);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(130, 30);
+            this.button24.TabIndex = 38;
+            this.button24.Text = "Read peripharal";
+            this.button24.UseVisualStyleBackColor = true;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
             // 
             // label71
             // 
@@ -680,9 +730,9 @@
             // button21
             // 
             this.button21.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button21.Location = new System.Drawing.Point(293, 129);
+            this.button21.Location = new System.Drawing.Point(244, 131);
             this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(155, 30);
+            this.button21.Size = new System.Drawing.Size(135, 30);
             this.button21.TabIndex = 31;
             this.button21.Text = "Erase peripharal";
             this.button21.UseVisualStyleBackColor = true;
@@ -691,7 +741,7 @@
             // button20
             // 
             this.button20.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button20.Location = new System.Drawing.Point(179, 129);
+            this.button20.Location = new System.Drawing.Point(128, 131);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(108, 30);
             this.button20.TabIndex = 30;
@@ -730,7 +780,7 @@
             this.congModebtn.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.congModebtn.Location = new System.Drawing.Point(12, 131);
             this.congModebtn.Name = "congModebtn";
-            this.congModebtn.Size = new System.Drawing.Size(161, 30);
+            this.congModebtn.Size = new System.Drawing.Size(110, 30);
             this.congModebtn.TabIndex = 13;
             this.congModebtn.Text = "Auto boot ";
             this.congModebtn.UseVisualStyleBackColor = true;
@@ -744,6 +794,8 @@
             this.serialPortCmb.Name = "serialPortCmb";
             this.serialPortCmb.Size = new System.Drawing.Size(121, 30);
             this.serialPortCmb.TabIndex = 0;
+            this.serialPortCmb.SelectedIndexChanged += new System.EventHandler(this.serialPortCmb_SelectedIndexChanged);
+            this.serialPortCmb.MouseEnter += new System.EventHandler(this.serialPortCmb_MouseEnter);
             // 
             // label1
             // 
@@ -757,6 +809,7 @@
             // 
             // logDisbtn
             // 
+            this.logDisbtn.Enabled = false;
             this.logDisbtn.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logDisbtn.Location = new System.Drawing.Point(244, 95);
             this.logDisbtn.Name = "logDisbtn";
@@ -780,7 +833,7 @@
             // nwNamebtn
             // 
             this.nwNamebtn.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nwNamebtn.Location = new System.Drawing.Point(12, 95);
+            this.nwNamebtn.Location = new System.Drawing.Point(12, 97);
             this.nwNamebtn.Name = "nwNamebtn";
             this.nwNamebtn.Size = new System.Drawing.Size(110, 30);
             this.nwNamebtn.TabIndex = 10;
@@ -823,7 +876,7 @@
             this.groupBox1.Controls.Add(this.button7);
             this.groupBox1.Controls.Add(this.button9);
             this.groupBox1.Controls.Add(this.button8);
-            this.groupBox1.Location = new System.Drawing.Point(652, 14);
+            this.groupBox1.Location = new System.Drawing.Point(694, 66);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(138, 211);
             this.groupBox1.TabIndex = 29;
@@ -1008,7 +1061,7 @@
             this.deviceConfig.Location = new System.Drawing.Point(4, 25);
             this.deviceConfig.Name = "deviceConfig";
             this.deviceConfig.Padding = new System.Windows.Forms.Padding(3);
-            this.deviceConfig.Size = new System.Drawing.Size(842, 599);
+            this.deviceConfig.Size = new System.Drawing.Size(842, 622);
             this.deviceConfig.TabIndex = 1;
             this.deviceConfig.Text = "Device Config";
             this.deviceConfig.UseVisualStyleBackColor = true;
@@ -1364,7 +1417,7 @@
             this.extender.Location = new System.Drawing.Point(4, 25);
             this.extender.Name = "extender";
             this.extender.Padding = new System.Windows.Forms.Padding(3);
-            this.extender.Size = new System.Drawing.Size(842, 599);
+            this.extender.Size = new System.Drawing.Size(842, 622);
             this.extender.TabIndex = 3;
             this.extender.Text = "Extender";
             this.extender.UseVisualStyleBackColor = true;
@@ -2206,6 +2259,7 @@
             this.comboBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Items.AddRange(new object[] {
+            "0",
             "1",
             "2",
             "3",
@@ -2267,7 +2321,7 @@
             this.imoni.Controls.Add(this.groupBox3);
             this.imoni.Location = new System.Drawing.Point(4, 25);
             this.imoni.Name = "imoni";
-            this.imoni.Size = new System.Drawing.Size(842, 599);
+            this.imoni.Size = new System.Drawing.Size(842, 622);
             this.imoni.TabIndex = 4;
             this.imoni.Text = "iMoni";
             this.imoni.UseVisualStyleBackColor = true;
@@ -3158,6 +3212,7 @@
             this.comboBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox15.FormattingEnabled = true;
             this.comboBox15.Items.AddRange(new object[] {
+            "0",
             "1",
             "2",
             "3",
@@ -4043,7 +4098,7 @@
             this.acem.Location = new System.Drawing.Point(4, 25);
             this.acem.Name = "acem";
             this.acem.Padding = new System.Windows.Forms.Padding(3);
-            this.acem.Size = new System.Drawing.Size(842, 599);
+            this.acem.Size = new System.Drawing.Size(842, 622);
             this.acem.TabIndex = 5;
             this.acem.Text = "AC Meter";
             this.acem.UseVisualStyleBackColor = true;
@@ -4099,9 +4154,9 @@
             // 
             // richTextBox6
             // 
-            this.richTextBox6.Location = new System.Drawing.Point(8, 558);
+            this.richTextBox6.Location = new System.Drawing.Point(8, 542);
             this.richTextBox6.Name = "richTextBox6";
-            this.richTextBox6.Size = new System.Drawing.Size(819, 35);
+            this.richTextBox6.Size = new System.Drawing.Size(819, 51);
             this.richTextBox6.TabIndex = 100;
             this.richTextBox6.Text = "";
             // 
@@ -5734,7 +5789,7 @@
             "9"});
             this.comboBox31.Location = new System.Drawing.Point(609, 154);
             this.comboBox31.Name = "comboBox31";
-            this.comboBox31.Size = new System.Drawing.Size(88, 26);
+            this.comboBox31.Size = new System.Drawing.Size(116, 26);
             this.comboBox31.TabIndex = 25;
             this.comboBox31.Text = "1";
             // 
@@ -5753,6 +5808,7 @@
             this.comboBox32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox32.FormattingEnabled = true;
             this.comboBox32.Items.AddRange(new object[] {
+            "0",
             "1",
             "2",
             "3",
@@ -5764,7 +5820,7 @@
             "9"});
             this.comboBox32.Location = new System.Drawing.Point(609, 107);
             this.comboBox32.Name = "comboBox32";
-            this.comboBox32.Size = new System.Drawing.Size(74, 26);
+            this.comboBox32.Size = new System.Drawing.Size(116, 26);
             this.comboBox32.TabIndex = 23;
             this.comboBox32.Text = "1";
             this.comboBox32.SelectedIndexChanged += new System.EventHandler(this.comboBox32_SelectedIndexChanged);
@@ -5800,9 +5856,9 @@
             "PM1130H no Utility"});
             this.comboBox33.Location = new System.Drawing.Point(609, 57);
             this.comboBox33.Name = "comboBox33";
-            this.comboBox33.Size = new System.Drawing.Size(74, 26);
+            this.comboBox33.Size = new System.Drawing.Size(116, 26);
             this.comboBox33.TabIndex = 20;
-            this.comboBox33.Text = "ACEM";
+            this.comboBox33.Text = "Genaral";
             // 
             // manual
             // 
@@ -5813,14 +5869,14 @@
             this.manual.Location = new System.Drawing.Point(4, 25);
             this.manual.Name = "manual";
             this.manual.Padding = new System.Windows.Forms.Padding(3);
-            this.manual.Size = new System.Drawing.Size(842, 599);
+            this.manual.Size = new System.Drawing.Size(842, 622);
             this.manual.TabIndex = 6;
             this.manual.Text = "Manual";
             // 
             // button19
             // 
             this.button19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button19.Location = new System.Drawing.Point(11, 221);
+            this.button19.Location = new System.Drawing.Point(11, 296);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(139, 36);
             this.button19.TabIndex = 19;
@@ -5831,7 +5887,7 @@
             // richTextBox7
             // 
             this.richTextBox7.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox7.Location = new System.Drawing.Point(11, 82);
+            this.richTextBox7.Location = new System.Drawing.Point(11, 157);
             this.richTextBox7.Name = "richTextBox7";
             this.richTextBox7.Size = new System.Drawing.Size(750, 133);
             this.richTextBox7.TabIndex = 18;
@@ -5859,36 +5915,243 @@
                 "rgo data.",
             "modbus PM1130H generator only",
             "modbus PM1130H utility only",
-            "China meter 3D3Y"});
+            "China meter 3D3Y",
+            "Extender",
+            "Temp Humidity",
+            "Generator"});
             this.comboBox54.Location = new System.Drawing.Point(128, 21);
             this.comboBox54.Name = "comboBox54";
             this.comboBox54.Size = new System.Drawing.Size(365, 26);
             this.comboBox54.TabIndex = 16;
-            this.comboBox54.Text = "iMoni B1 Descriptor with IMSI signal and packet counter in IOs 5,6,7";
             this.comboBox54.SelectedIndexChanged += new System.EventHandler(this.comboBox54_SelectedIndexChanged);
             // 
-            // button24
+            // session
             // 
-            this.button24.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button24.Location = new System.Drawing.Point(454, 129);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(155, 30);
-            this.button24.TabIndex = 38;
-            this.button24.Text = "Read peripharal";
-            this.button24.UseVisualStyleBackColor = true;
-            this.button24.Click += new System.EventHandler(this.button24_Click);
+            this.session.Controls.Add(this.label76);
+            this.session.Controls.Add(this.button26);
+            this.session.Controls.Add(this.button28);
+            this.session.Controls.Add(this.button27);
+            this.session.Controls.Add(this.label75);
+            this.session.Controls.Add(this.label73);
+            this.session.Controls.Add(this.textBox3);
+            this.session.Controls.Add(this.textBox2);
+            this.session.Controls.Add(this.label74);
+            this.session.Controls.Add(this.label72);
+            this.session.Controls.Add(this.richTextBox9);
+            this.session.Controls.Add(this.comboBox56);
+            this.session.Controls.Add(this.comboBox55);
+            this.session.Controls.Add(this.button23);
+            this.session.Location = new System.Drawing.Point(4, 25);
+            this.session.Name = "session";
+            this.session.Padding = new System.Windows.Forms.Padding(3);
+            this.session.Size = new System.Drawing.Size(842, 622);
+            this.session.TabIndex = 7;
+            this.session.Text = "Template";
+            this.session.UseVisualStyleBackColor = true;
+            this.session.Click += new System.EventHandler(this.session_Click);
+            this.session.MouseMove += new System.Windows.Forms.MouseEventHandler(this.session_MouseMove);
+            // 
+            // button28
+            // 
+            this.button28.Location = new System.Drawing.Point(460, 129);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(104, 30);
+            this.button28.TabIndex = 99;
+            this.button28.Text = "Update config";
+            this.button28.UseVisualStyleBackColor = true;
+            this.button28.Click += new System.EventHandler(this.button28_Click);
+            // 
+            // button27
+            // 
+            this.button27.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button27.Location = new System.Drawing.Point(25, 558);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(145, 38);
+            this.button27.TabIndex = 98;
+            this.button27.Text = "Send Config";
+            this.button27.UseVisualStyleBackColor = true;
+            this.button27.Click += new System.EventHandler(this.button27_Click);
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label75.Location = new System.Drawing.Point(224, 61);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(96, 18);
+            this.label75.TabIndex = 95;
+            this.label75.Text = "Configuration";
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label73.Location = new System.Drawing.Point(22, 61);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(69, 18);
+            this.label73.TabIndex = 94;
+            this.label73.Text = "Template";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(313, 129);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 24);
+            this.textBox3.TabIndex = 93;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(70, 129);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 24);
+            this.textBox2.TabIndex = 92;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label74.Location = new System.Drawing.Point(188, 133);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(119, 18);
+            this.label74.TabIndex = 91;
+            this.label74.Text = "Modbus address";
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label72.Location = new System.Drawing.Point(22, 133);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(42, 18);
+            this.label72.TabIndex = 24;
+            this.label72.Text = "Index";
+            // 
+            // richTextBox9
+            // 
+            this.richTextBox9.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox9.Location = new System.Drawing.Point(25, 173);
+            this.richTextBox9.Name = "richTextBox9";
+            this.richTextBox9.ReadOnly = true;
+            this.richTextBox9.Size = new System.Drawing.Size(707, 379);
+            this.richTextBox9.TabIndex = 3;
+            this.richTextBox9.Text = "";
+            this.richTextBox9.MouseMove += new System.Windows.Forms.MouseEventHandler(this.richTextBox9_MouseMove);
+            // 
+            // comboBox56
+            // 
+            this.comboBox56.FormattingEnabled = true;
+            this.comboBox56.Location = new System.Drawing.Point(227, 92);
+            this.comboBox56.Name = "comboBox56";
+            this.comboBox56.Size = new System.Drawing.Size(337, 24);
+            this.comboBox56.TabIndex = 2;
+            this.comboBox56.SelectedIndexChanged += new System.EventHandler(this.comboBox56_SelectedIndexChanged);
+            // 
+            // comboBox55
+            // 
+            this.comboBox55.FormattingEnabled = true;
+            this.comboBox55.Location = new System.Drawing.Point(25, 92);
+            this.comboBox55.Name = "comboBox55";
+            this.comboBox55.Size = new System.Drawing.Size(176, 24);
+            this.comboBox55.TabIndex = 1;
+            this.comboBox55.SelectedIndexChanged += new System.EventHandler(this.comboBox55_SelectedIndexChanged);
+            // 
+            // button23
+            // 
+            this.button23.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button23.Location = new System.Drawing.Point(25, 20);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(145, 28);
+            this.button23.TabIndex = 0;
+            this.button23.Text = "Load default file";
+            this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.button23_Click_2);
+            // 
+            // oneHtzTmr
+            // 
+            this.oneHtzTmr.Interval = 1000;
+            this.oneHtzTmr.Tick += new System.EventHandler(this.oneHtzTmr_Tick);
+            // 
+            // button26
+            // 
+            this.button26.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button26.Location = new System.Drawing.Point(227, 20);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(133, 28);
+            this.button26.TabIndex = 100;
+            this.button26.Text = "Load from file";
+            this.button26.UseVisualStyleBackColor = true;
+            this.button26.Click += new System.EventHandler(this.button26_Click_1);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Location = new System.Drawing.Point(22, 599);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(16, 17);
+            this.label76.TabIndex = 101;
+            this.label76.Text = "..";
+            this.label76.Visible = false;
+            // 
+            // packetDecode
+            // 
+            this.packetDecode.Controls.Add(this.richTextBox11);
+            this.packetDecode.Controls.Add(this.richTextBox10);
+            this.packetDecode.Controls.Add(this.button29);
+            this.packetDecode.Location = new System.Drawing.Point(4, 25);
+            this.packetDecode.Name = "packetDecode";
+            this.packetDecode.Size = new System.Drawing.Size(842, 622);
+            this.packetDecode.TabIndex = 8;
+            this.packetDecode.Text = "Packet Decode";
+            this.packetDecode.UseVisualStyleBackColor = true;
+            // 
+            // button29
+            // 
+            this.button29.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button29.Location = new System.Drawing.Point(8, 139);
+            this.button29.Name = "button29";
+            this.button29.Size = new System.Drawing.Size(96, 33);
+            this.button29.TabIndex = 41;
+            this.button29.Text = "Decode";
+            this.button29.UseVisualStyleBackColor = true;
+            this.button29.Click += new System.EventHandler(this.button29_Click_1);
+            // 
+            // richTextBox10
+            // 
+            this.richTextBox10.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox10.Location = new System.Drawing.Point(8, 12);
+            this.richTextBox10.Name = "richTextBox10";
+            this.richTextBox10.Size = new System.Drawing.Size(816, 121);
+            this.richTextBox10.TabIndex = 42;
+            this.richTextBox10.Text = "";
+            // 
+            // richTextBox11
+            // 
+            this.richTextBox11.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox11.Location = new System.Drawing.Point(8, 178);
+            this.richTextBox11.Name = "richTextBox11";
+            this.richTextBox11.Size = new System.Drawing.Size(816, 435);
+            this.richTextBox11.TabIndex = 43;
+            this.richTextBox11.Text = "";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(859, 628);
+            this.ClientSize = new System.Drawing.Size(859, 650);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Home";
+            this.Text = "iMoni config v1.1 (Nightly)";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.home.ResumeLayout(false);
@@ -6013,6 +6276,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown84)).EndInit();
             this.manual.ResumeLayout(false);
             this.manual.PerformLayout();
+            this.session.ResumeLayout(false);
+            this.session.PerformLayout();
+            this.packetDecode.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -6378,6 +6644,28 @@
         private System.Windows.Forms.Label label71;
         private System.Windows.Forms.Label label70;
         private System.Windows.Forms.Button button24;
+        private System.Windows.Forms.TabPage session;
+        private System.Windows.Forms.Button button23;
+        private System.Windows.Forms.ComboBox comboBox55;
+        private System.Windows.Forms.ComboBox comboBox56;
+        private System.Windows.Forms.RichTextBox richTextBox9;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.Button button25;
+        private System.Windows.Forms.Timer oneHtzTmr;
+        private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.TabPage packetDecode;
+        private System.Windows.Forms.RichTextBox richTextBox11;
+        private System.Windows.Forms.RichTextBox richTextBox10;
+        private System.Windows.Forms.Button button29;
     }
 }
 
