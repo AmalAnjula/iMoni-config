@@ -1717,6 +1717,7 @@ void updateDebugTxBox(String data) {
 
         private void button26_Click_1(object sender, EventArgs e)
         {
+            richTextBox9.Text = "";
             OpenFileDialog dlg = new OpenFileDialog
             {
                 InitialDirectory = @"D:\",

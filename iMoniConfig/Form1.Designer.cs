@@ -391,6 +391,8 @@
             this.label69 = new System.Windows.Forms.Label();
             this.comboBox54 = new System.Windows.Forms.ComboBox();
             this.session = new System.Windows.Forms.TabPage();
+            this.label76 = new System.Windows.Forms.Label();
+            this.button26 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
             this.button27 = new System.Windows.Forms.Button();
             this.label75 = new System.Windows.Forms.Label();
@@ -403,14 +405,12 @@
             this.comboBox56 = new System.Windows.Forms.ComboBox();
             this.comboBox55 = new System.Windows.Forms.ComboBox();
             this.button23 = new System.Windows.Forms.Button();
-            this.oneHtzTmr = new System.Windows.Forms.Timer(this.components);
-            this.button26 = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label76 = new System.Windows.Forms.Label();
             this.packetDecode = new System.Windows.Forms.TabPage();
-            this.button29 = new System.Windows.Forms.Button();
-            this.richTextBox10 = new System.Windows.Forms.RichTextBox();
             this.richTextBox11 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox10 = new System.Windows.Forms.RichTextBox();
+            this.button29 = new System.Windows.Forms.Button();
+            this.oneHtzTmr = new System.Windows.Forms.Timer(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.home.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -5951,6 +5951,27 @@
             this.session.Click += new System.EventHandler(this.session_Click);
             this.session.MouseMove += new System.Windows.Forms.MouseEventHandler(this.session_MouseMove);
             // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Location = new System.Drawing.Point(22, 599);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(16, 17);
+            this.label76.TabIndex = 101;
+            this.label76.Text = "..";
+            this.label76.Visible = false;
+            // 
+            // button26
+            // 
+            this.button26.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button26.Location = new System.Drawing.Point(227, 20);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(133, 28);
+            this.button26.TabIndex = 100;
+            this.button26.Text = "Load from file";
+            this.button26.UseVisualStyleBackColor = true;
+            this.button26.Click += new System.EventHandler(this.button26_Click_1);
+            // 
             // button28
             // 
             this.button28.Location = new System.Drawing.Point(460, 129);
@@ -6070,36 +6091,6 @@
             this.button23.UseVisualStyleBackColor = true;
             this.button23.Click += new System.EventHandler(this.button23_Click_2);
             // 
-            // oneHtzTmr
-            // 
-            this.oneHtzTmr.Interval = 1000;
-            this.oneHtzTmr.Tick += new System.EventHandler(this.oneHtzTmr_Tick);
-            // 
-            // button26
-            // 
-            this.button26.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button26.Location = new System.Drawing.Point(227, 20);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(133, 28);
-            this.button26.TabIndex = 100;
-            this.button26.Text = "Load from file";
-            this.button26.UseVisualStyleBackColor = true;
-            this.button26.Click += new System.EventHandler(this.button26_Click_1);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // label76
-            // 
-            this.label76.AutoSize = true;
-            this.label76.Location = new System.Drawing.Point(22, 599);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(16, 17);
-            this.label76.TabIndex = 101;
-            this.label76.Text = "..";
-            this.label76.Visible = false;
-            // 
             // packetDecode
             // 
             this.packetDecode.Controls.Add(this.richTextBox11);
@@ -6112,6 +6103,24 @@
             this.packetDecode.Text = "Packet Decode";
             this.packetDecode.UseVisualStyleBackColor = true;
             // 
+            // richTextBox11
+            // 
+            this.richTextBox11.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox11.Location = new System.Drawing.Point(8, 178);
+            this.richTextBox11.Name = "richTextBox11";
+            this.richTextBox11.Size = new System.Drawing.Size(816, 435);
+            this.richTextBox11.TabIndex = 43;
+            this.richTextBox11.Text = "";
+            // 
+            // richTextBox10
+            // 
+            this.richTextBox10.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox10.Location = new System.Drawing.Point(8, 12);
+            this.richTextBox10.Name = "richTextBox10";
+            this.richTextBox10.Size = new System.Drawing.Size(816, 121);
+            this.richTextBox10.TabIndex = 42;
+            this.richTextBox10.Text = "";
+            // 
             // button29
             // 
             this.button29.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -6123,23 +6132,14 @@
             this.button29.UseVisualStyleBackColor = true;
             this.button29.Click += new System.EventHandler(this.button29_Click_1);
             // 
-            // richTextBox10
+            // oneHtzTmr
             // 
-            this.richTextBox10.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox10.Location = new System.Drawing.Point(8, 12);
-            this.richTextBox10.Name = "richTextBox10";
-            this.richTextBox10.Size = new System.Drawing.Size(816, 121);
-            this.richTextBox10.TabIndex = 42;
-            this.richTextBox10.Text = "";
+            this.oneHtzTmr.Interval = 1000;
+            this.oneHtzTmr.Tick += new System.EventHandler(this.oneHtzTmr_Tick);
             // 
-            // richTextBox11
+            // openFileDialog1
             // 
-            this.richTextBox11.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox11.Location = new System.Drawing.Point(8, 178);
-            this.richTextBox11.Name = "richTextBox11";
-            this.richTextBox11.Size = new System.Drawing.Size(816, 435);
-            this.richTextBox11.TabIndex = 43;
-            this.richTextBox11.Text = "";
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -6151,7 +6151,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "iMoni config v1.1 (Nightly)";
+            this.Text = "iMoni config v1.3 (Nightly)";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.home.ResumeLayout(false);
