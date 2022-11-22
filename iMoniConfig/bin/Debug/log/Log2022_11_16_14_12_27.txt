@@ -1,0 +1,106 @@
+Fail imon0-0-B2-OK imon1-0-B2-OK imon1-0-B2-OK imon1-0-B2-OK imon1-0-B2-OK imon1-0-B2-OK gen1-0-B1-
+
+Fail 
+
+SMS CHECK
+
+CMD:AT+CMGR=1
+
+RES: 
+
+
+OK
+
+
+
+
+CMD:AT+CMGD=1
+
+RES: 
+
+
+OK
+
+
+
+
+CMD:AT+CMGR=2
+
+RES: 
+
+
+OK
+
+
+
+
+CMD:AT+CMGD=2
+
+RES: 
+
+
+OK
+
+
+
+
+SENDING HEARTBEAT--GSM
+
+{38363837323830333733373637303132303232313131363134313234366E1A0000FB}
+
+
+
+HEARTBEAT: Fail
+
+
+
+Trying GPRS..
+
+CMD:AT+SAPBR=0,1
+
+RES: 
+
+
+ERROR
+
+
+*
+
+CMD:AT+SAPBR=3,1,"Contype","GPRS"
+
+RES: 
+
+
+OK
+
+
+AT+SAPBR=3,1,"APN","dialogbb","123","456"
+
+RES: 
+
+
+OK
+
+
+
+
+
+ERROR
+
+
+ex1-1-B1-
+
+Fail ex1-1-B1-
+
+Fail ex1-1-B1-
+
+Fail ex1-1-B1-
+
+Fail ex1-1-B1-
+
+Fail ex1-1-B1-
+
+Fail ex1-1-B1-
+
+Fail acem15-0-B4-
+
