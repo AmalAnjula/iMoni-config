@@ -15,6 +15,9 @@ namespace iMoniConfig
 {
     public partial class Form1 : Form
     {
+       
+        Boolean autoScrolTextBox = true;
+        UInt16 lastScrolPos = 0;
         uint timeOutTime = 20000;
         uint timeOutCounter = 0;
         String indata = "";
@@ -27,7 +30,9 @@ namespace iMoniConfig
             InitializeComponent();
         }
 
-       
+
+
+ 
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -78,7 +83,7 @@ namespace iMoniConfig
 
         void tabDisable()
         {
-            for(byte i = 0; i < tabControl1.TabCount; i++)
+            for(byte i = 0; i < tabControl1.TabCount-1; i++)
             {
                 tabControl1.TabPages[i].Enabled = false;
             }
@@ -277,9 +282,28 @@ namespace iMoniConfig
         }
 
         void scrolRich() {
-            richTextBox1.SelectionStart = richTextBox1.Text.Length;
-            // scroll it automatically
-            richTextBox1.ScrollToCaret();
+
+
+            if (autoScrolTextBox == true)
+            {
+                label71.ForeColor = Color.Red;
+                // Console.WriteLine(autoScrolTextBox);
+                richTextBox1.SelectionStart = richTextBox1.Text.Length;
+                // scroll it automatically
+                richTextBox1.ScrollToCaret();
+
+            
+            }
+            else {
+              //  int pos = richTextBox1.SelectionStart;
+               // richTextBox.AppendText(stuff);
+             //   richTextBox1.SelectionStart = lastScrolPos;
+             //   richTextBox1.ScrollToCaret(); // try with and without this line
+
+                label71.ForeColor = Color.Black;
+            }
+
+            
         }
 
 
@@ -334,6 +358,24 @@ namespace iMoniConfig
             DateTime aDate = DateTime.Now;
             String dateTime = aDate.ToString("yyyy/MM/dd HH:mm:ss");
 
+            Int32 curentTextboxLength = richTextBox1.Text.Length;
+            label71.Text = "RX " + curentTextboxLength + " b";
+
+            if (curentTextboxLength > 1000)
+            {
+                label71.Text = "RX " + curentTextboxLength/1000.00+ " Kb";
+
+            }
+           
+            
+            if (curentTextboxLength > 4000  )
+            {
+                richTextBox1.Clear();
+            }
+       
+          
+
+
             if (clockcheck.Checked == true)
             {
                 richTextBox1.AppendText("[" + dateTime + "] " + data + Environment.NewLine);
@@ -357,6 +399,8 @@ void updateDebugTxBox(String data) {
                 DateTime aDate = DateTime.Now;
                 String dateTime = aDate.ToString("yyyy/MM/dd HH:mm:ss");
 
+
+                
                 richTextBox1.AppendText("[" + dateTime + " TX] " + data + Environment.NewLine);
                 scrolRich();
                 writeToLog("[" + dateTime + " TX] " + data + Environment.NewLine);
@@ -1817,6 +1861,52 @@ void updateDebugTxBox(String data) {
         {
             richTextBox11.Clear();
             run_cmd(richTextBox10.Text, "fhdx\r\n");
+        }
+
+        private void richTextBox1_MouseEnter(object sender, EventArgs e)
+        {
+            Console.WriteLine("Enter");
+
+            autoScrolTextBox = false;
+            lastScrolPos =Convert.ToUInt16(richTextBox1.Text.Length);
+        }
+
+        private void richTextBox1_MouseLeave(object sender, EventArgs e)
+        {
+            Console.WriteLine("leave");
+            autoScrolTextBox = true;
+            
+
+        }
+
+        private void richTextBox10_MouseEnter(object sender, EventArgs e)
+        {
+
+            try {
+                string str = Clipboard.GetText();
+                richTextBox10.Text = str;
+            }
+
+            catch { }
+
+            
+        }
+
+        private void richTextBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            try
+            {
+                Clipboard.SetText(richTextBox1.SelectedText);
+            }
+            catch { }
+
+            
         }
     }
 }

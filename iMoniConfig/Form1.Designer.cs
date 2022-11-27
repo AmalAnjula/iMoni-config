@@ -535,8 +535,14 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(592, 415);
             this.richTextBox1.TabIndex = 2;
+            this.richTextBox1.TabStop = false;
             this.richTextBox1.Text = "";
+            this.richTextBox1.WordWrap = false;
+            this.richTextBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseClick);
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.richTextBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseDoubleClick);
+            this.richTextBox1.MouseEnter += new System.EventHandler(this.richTextBox1_MouseEnter);
+            this.richTextBox1.MouseLeave += new System.EventHandler(this.richTextBox1_MouseLeave);
             // 
             // serialPort1
             // 
@@ -6120,6 +6126,7 @@
             this.richTextBox10.Size = new System.Drawing.Size(816, 121);
             this.richTextBox10.TabIndex = 42;
             this.richTextBox10.Text = "";
+            this.richTextBox10.MouseEnter += new System.EventHandler(this.richTextBox10_MouseEnter);
             // 
             // button29
             // 
