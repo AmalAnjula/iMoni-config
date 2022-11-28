@@ -174,7 +174,8 @@ namespace iMoniConfig
 
                         
                         richTextBox2.Text=(indata);
-                        indata = indata.Substring(1, indata.Length - 3);
+                        indata = indata.Substring(1, indata.Length - 1);
+                        Console.WriteLine(indata);
                         string[] my_array = new string[20];
                         my_array = indata.Split(',');
                         IMEItextBox.Text = my_array[0];
@@ -187,9 +188,9 @@ namespace iMoniConfig
                         OP3textBox.Text = my_array[7];
                         OP4textBox.Text = my_array[8];
                         URL2textBox.Text = my_array[9];
-                        CRCtextBox.Text = my_array[10];
+                        CRCtextBox.Text = my_array[10].Substring(0, my_array[10].Length - 1);
 
-                       /// Console.WriteLine("IMIE"+my_array[0]);
+                        /// Console.WriteLine("IMIE"+my_array[0]);
 
                     }
                     else if (tabControl1.SelectedIndex == 2 && indata.IndexOf("Saved at") > -1)

@@ -1203,7 +1203,7 @@
             // 
             // CRCtextBox
             // 
-            this.CRCtextBox.Location = new System.Drawing.Point(763, 37);
+            this.CRCtextBox.Location = new System.Drawing.Point(751, 37);
             this.CRCtextBox.Margin = new System.Windows.Forms.Padding(4);
             this.CRCtextBox.Name = "CRCtextBox";
             this.CRCtextBox.ReadOnly = true;
