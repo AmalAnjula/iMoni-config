@@ -1,2 +1,4 @@
 *.log
 log/
+iMoni-config/iMoniConfig/bin/Debug/log/
+**/log
