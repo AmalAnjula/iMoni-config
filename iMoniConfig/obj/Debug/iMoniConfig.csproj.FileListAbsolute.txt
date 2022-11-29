@@ -6,3 +6,7 @@ C:\Users\Amal Anjula\Documents\Visual Studio 2015\Projects\iMoniConfig\iMoniConf
 C:\Users\Amal Anjula\Documents\Visual Studio 2015\Projects\iMoniConfig\iMoniConfig\obj\Debug\iMoniConfig.exe
 C:\Users\Amal Anjula\Documents\Visual Studio 2015\Projects\iMoniConfig\iMoniConfig\obj\Debug\iMoniConfig.pdb
 C:\Users\Amal Anjula\Documents\Visual Studio 2015\Projects\iMoniConfig\iMoniConfig\obj\Debug\iMoniConfig.csprojResolveAssemblyReference.cache
+C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\bin\Debug\iMoniConfig.exe.manifest
+C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\bin\Debug\iMoniConfig.application
+C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\obj\Debug\iMoniConfig.exe.manifest
+C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\obj\Debug\iMoniConfig.application

@@ -74,9 +74,12 @@ namespace iMoniConfig
         void tabAnable() {
             for (byte i = 0; i < tabControl1.TabCount; i++)
             {
-                tabControl1.TabPages[i].Enabled = true;
+               // tabControl1.TabPages[i].Enabled = true;
             }
+            tabControl1.TabPages[0].Enabled = true;
+            tabControl1.TabPages[1].Enabled = true;
             tabControl1.TabPages[5].Enabled = false;
+            tabControl1.TabPages[6].Enabled = true;
 
         }
 
@@ -107,6 +110,7 @@ namespace iMoniConfig
                     baudCmb.Enabled = false;
                     timer1.Enabled = true;
                     tabAnable();
+                    oneHtzTmr.Enabled = true;
                 }
                 else {
                     
@@ -116,6 +120,7 @@ namespace iMoniConfig
                     baudCmb.Enabled = true;
                     timer1.Enabled = false;
                     tabDisable();
+                    oneHtzTmr.Enabled = false;
                 }
 
                 
@@ -1749,14 +1754,15 @@ void updateDebugTxBox(String data) {
 
         private void oneHtzTmr_Tick(object sender, EventArgs e)
         {
-            timeOutCounter++;
-            if(timeOutCounter>10 && nowState == "tempMode")
-            {
-                timeOutCounter = 0;
-                button27.Text = "Send config";
-                MessageBox.Show("Time out for iMoni responce. please try again","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
-
+            /* timeOutCounter++;
+              if(timeOutCounter>10 && nowState == "tempMode")
+              {
+                  timeOutCounter = 0;
+                  button27.Text = "Send config";
+                  MessageBox.Show("Time out for iMoni responce. please try again","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+              }
+              */
+            updateAcemPage();
 
         }
 
@@ -1908,6 +1914,23 @@ void updateDebugTxBox(String data) {
             catch { }
 
             
+        }
+
+        private void groupBox5_Move(object sender, EventArgs e)
+        {
+           // updateAcemPage();
+        }
+
+        private void groupBox5_MouseHover(object sender, EventArgs e)
+        {
+            //updateAcemPage();
+            //Console.WriteLine("upper move");
+        }
+
+        private void groupBox5_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            updateAcemPage();
+            Console.WriteLine("upper move");
         }
     }
 }

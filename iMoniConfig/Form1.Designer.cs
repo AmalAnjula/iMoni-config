@@ -5095,6 +5095,9 @@
             this.groupBox5.TabIndex = 87;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "IO 0 to 5 settings";
+            this.groupBox5.MouseCaptureChanged += new System.EventHandler(this.groupBox5_MouseCaptureChanged);
+            this.groupBox5.MouseHover += new System.EventHandler(this.groupBox5_MouseHover);
+            this.groupBox5.Move += new System.EventHandler(this.groupBox5_Move);
             // 
             // comboBox48
             // 
@@ -6073,7 +6076,7 @@
             this.comboBox56.FormattingEnabled = true;
             this.comboBox56.Location = new System.Drawing.Point(227, 92);
             this.comboBox56.Name = "comboBox56";
-            this.comboBox56.Size = new System.Drawing.Size(337, 24);
+            this.comboBox56.Size = new System.Drawing.Size(505, 24);
             this.comboBox56.TabIndex = 2;
             this.comboBox56.SelectedIndexChanged += new System.EventHandler(this.comboBox56_SelectedIndexChanged);
             // 
