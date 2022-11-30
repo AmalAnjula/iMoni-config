@@ -802,6 +802,7 @@
             this.serialPortCmb.TabIndex = 0;
             this.serialPortCmb.SelectedIndexChanged += new System.EventHandler(this.serialPortCmb_SelectedIndexChanged);
             this.serialPortCmb.MouseEnter += new System.EventHandler(this.serialPortCmb_MouseEnter);
+            this.serialPortCmb.MouseUp += new System.Windows.Forms.MouseEventHandler(this.serialPortCmb_MouseUp);
             // 
             // label1
             // 

@@ -1748,8 +1748,8 @@ void updateDebugTxBox(String data) {
 
         private void serialPortCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var ports = SerialPort.GetPortNames();
-            serialPortCmb.DataSource = ports;
+            //var ports = SerialPort.GetPortNames();
+           // serialPortCmb.DataSource = ports;
         }
 
         private void oneHtzTmr_Tick(object sender, EventArgs e)
@@ -1931,6 +1931,11 @@ void updateDebugTxBox(String data) {
         {
             updateAcemPage();
             Console.WriteLine("upper move");
+        }
+
+        private void serialPortCmb_MouseUp(object sender, MouseEventArgs e)
+        {
+            Console.WriteLine("upper combo");
         }
     }
 }
