@@ -1937,5 +1937,11 @@ void updateDebugTxBox(String data) {
         {
             Console.WriteLine("upper combo");
         }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            // opens the folder in explorer
+            Process.Start(System.IO.Path.GetDirectoryName(Application.ExecutablePath));
+        }
     }
 }

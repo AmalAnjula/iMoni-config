@@ -411,6 +411,7 @@
             this.button29 = new System.Windows.Forms.Button();
             this.oneHtzTmr = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button30 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.home.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -614,6 +615,7 @@
             // 
             // home
             // 
+            this.home.Controls.Add(this.button30);
             this.home.Controls.Add(this.button25);
             this.home.Controls.Add(this.button24);
             this.home.Controls.Add(this.label71);
@@ -6152,6 +6154,17 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // button30
+            // 
+            this.button30.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button30.Location = new System.Drawing.Point(490, 93);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(110, 30);
+            this.button30.TabIndex = 40;
+            this.button30.Text = "Open folder";
+            this.button30.UseVisualStyleBackColor = true;
+            this.button30.Click += new System.EventHandler(this.button30_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -6677,6 +6690,7 @@
         private System.Windows.Forms.RichTextBox richTextBox11;
         private System.Windows.Forms.RichTextBox richTextBox10;
         private System.Windows.Forms.Button button29;
+        private System.Windows.Forms.Button button30;
     }
 }
 
