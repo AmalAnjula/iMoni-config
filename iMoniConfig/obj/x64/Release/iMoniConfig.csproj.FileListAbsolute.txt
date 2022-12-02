@@ -1,5 +1,3 @@
-C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\bin\x64\Release\iMoniConfig.exe.manifest
-C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\bin\x64\Release\iMoniConfig.application
 C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\bin\x64\Release\iMoniConfig.exe
 C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\bin\x64\Release\iMoniConfig.pdb
 C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\bin\x64\Release\mscorlib.dll
@@ -19,7 +17,6 @@ C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConf
 C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\obj\x64\Release\iMoniConfig.Form1.resources
 C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\obj\x64\Release\iMoniConfig.Properties.Resources.resources
 C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\obj\x64\Release\iMoniConfig.csproj.GenerateResource.Cache
-C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\obj\x64\Release\iMoniConfig.exe.manifest
-C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\obj\x64\Release\iMoniConfig.application
 C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\obj\x64\Release\iMoniConfig.exe
 C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\obj\x64\Release\iMoniConfig.pdb
+C:\Users\Amal Anjula\documents\visual studio 2015\Projects\iMoniConfig\iMoniConfig\obj\x64\Release\iMoniConfig.csprojResolveAssemblyReference.cache
