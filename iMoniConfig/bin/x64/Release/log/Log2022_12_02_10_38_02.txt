@@ -1,0 +1,8 @@
+RES: **
+
+CMD:AT+CLTS=1
+
+RES: *
+
+switch ON modem
+

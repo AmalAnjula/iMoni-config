@@ -1,0 +1,48 @@
+Fail acem5-0-B2-
+
+Fail 
+
+SMS CHECK
+
+CMD:AT+CMGR=1
+
+RES: 
+
+
+OK
+
+
+
+
+CMD:AT+CMGD=1
+
+RES: 
+
+
+OK
+
+
+
+
+CMD:AT+CMGR=2
+
+RES: 
+
+
+OK
+
+
+
+
+CMD:AT+CMGD=2
+
+RES: 
+
+
+OK
+
+
+imon0-0-B2-OK acem1-0-B1-
+
+Fail acem5-0-B2-
+

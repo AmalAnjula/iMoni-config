@@ -1,0 +1,166 @@
+
+
+Starting iMoni App..INIT modem..CMD:AT+CLTS=1
+
+RES: AT+CLTS=1
+
+
+
+
+OK
+*
+
+
+
+CMD:AT+G
+
+SN
+
+RES: AT+GSN
+
+
+
+
+868728037376701
+
+
+
+
+
+OK
+
+
+
+
+IMEI:868728037376701
+
+CMD:AT+CSMINS?
+
+RES: AT+CSMINS?
+
+
+
+
++CSMINS: 0,1
+
+
+
+
+
+OK
+
+
+
+
+CMD:AT+CREG?
+
+RES: AT+CREG?
+
+
+
+
++CREG: 0,1
+
+
+
+
+
+OK
+
+
+
+
+CMD:ATE0
+
+RES: ATE0
+
+
+
+
+OK
+
+
+
+
+CMD:AT+CMGF=1
+
+RES: 
+
+
+OK
+
+
+
+
+CMD:AT+CNMI=0,0,0,0,0
+
+RES: 
+
+
+OK
+
+
+
+
+CMD:AT+CMGDA="DEL ALL"
+
+RES: 
+
+
+ERROR
+
+
+*
+
+CMD:AT+CMGDA="DEL ALL"
+
+RES: 
+
+
+ERROR
+
+
+* OK
+
+CMD:AT+CIMI
+
+RES: 
+
+
+413027025364321
+
+
+
+
+
+OK
+
+
+
+
+
+SMS Ready
+
+
+
+
+IMSI:413027025364321
+
+CMD:AT+CCLK?
+
+RES: 
+
+
++CCLK: "22/11/29,21:37:24+22"
+
+
+
+
+
+OK
+
+
+imon0-0-B2-OK acem1-0-B1-
+
+Fail acem5-0-B2-
+
