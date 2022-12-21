@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="iMoniConfig.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="iMoniConfig" version="1.5.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="iMoniConfig" version="1.5.0.0" publicKeyToken="BAE6DE2ACF7B15CA" language="neutral" processorArchitecture="msil" />
     <commandLine file="iMoniConfig.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,13 +43,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="iMoniConfig.exe" size="130464">
-      <assemblyIdentity name="iMoniConfig" version="1.5.0.0" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="iMoniConfig" version="1.5.0.0" publicKeyToken="BAE6DE2ACF7B15CA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>XKkXY9a5B3QoTRefopHBpZ4gHC1ckWxUI1jzFgmrMow=</dsig:DigestValue>
+        <dsig:DigestValue>BPqoDJ5FpXSlNMicvAE4KYKCD8L5f414ogxkfn9ulnA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
